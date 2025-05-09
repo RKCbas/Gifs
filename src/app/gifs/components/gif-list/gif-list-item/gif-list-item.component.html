@@ -1,7 +1,11 @@
-<div>
+<div class="grid gap-4">
+
+  @for (Url of imageUrls(); track Url) {
     <img
       class="h-auto max-w-full rounded-lg"
-      [src]=" imageUrl() "
+      [src]="Url"
       alt=""
     />
+  }
+
 </div>
