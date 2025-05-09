@@ -36,6 +36,26 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
+You must Create 2 environment files in the environments folder with the next syntax:
+
+Filename: 'environment.development.ts' and 'environment.ts'
+
+``` Typescript
+export const environment = {
+    
+    production: true,
+    companyName: 'Gifs',
+    companyName2: 'App',
+    companySlogan: 'Maneja tus gifs',
+
+    // ApiKeys
+    giphyApiKey: 'GiphyApiKey'
+    
+    // URLS
+    
+};
+```
+
 ## Running unit tests
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
