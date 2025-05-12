@@ -1,31 +1,31 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { GifListComponent } from "../../components/gif-list/gif-list.component";
 import { GifService } from '../../services/gifs.service';
 
-const imageUrls: string[][] = [
+// const imageUrls: string[][] = [
 
-  [
-    "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg",
-    "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg",
-    "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg"
-  ],
-  [
-    "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg",
-    "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg",
-    "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg",
-  ],
-  [
-    "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg",
-    "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg",
-    "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg",
-  ],
-  [
-    "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg",
-    "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg",
-    "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
-  ]
+//   [
+//     "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg",
+//     "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg",
+//     "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg"
+//   ],
+//   [
+//     "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg",
+//     "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg",
+//     "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg",
+//   ],
+//   [
+//     "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg",
+//     "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg",
+//     "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg",
+//   ],
+//   [
+//     "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg",
+//     "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg",
+//     "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+//   ]
   
-];
+// ];
 
 @Component({
   selector: 'app-trending-page',
@@ -36,7 +36,7 @@ const imageUrls: string[][] = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TrendingPageComponent {
-  gifs = signal(imageUrls);
+  // gifs = signal(imageUrls);
 
   gifService = inject( GifService )
 

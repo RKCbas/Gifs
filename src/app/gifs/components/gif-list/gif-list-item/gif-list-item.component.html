@@ -1,9 +1,9 @@
 <div class="grid gap-4">
 
-  @for (Url of imageUrls(); track Url) {
+  @for (gif of gifSet(); track gif.id) {
     <img
-      class="h-auto max-w-full rounded-lg"
-      [src]="Url"
+      class=" max-h-full max-w-full rounded-lg object-cover"
+      [src]="gif.url"
       alt=""
     />
   }
