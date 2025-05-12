@@ -1,10 +1,23 @@
-<!-- in case that the options where too many use :overflow-y-scroll-->
-<div id="menu" class="w-[220px] bg-gray-900 min-h-screen z-10 text-slate-300 fixed left-0 h-screen overflow-y-auto">
-  
-    <!-- gifs-side-menu-header -->
-   <gifs-side-menu-header></gifs-side-menu-header>
 
-    <!-- gifs-side-menu-options -->
-   <gifs-side-menu-options></gifs-side-menu-options>
-   
+<gifs-side-menu-button ></gifs-side-menu-button>
+
+<div
+  id="menu"
+  class="transform w-[220px] bg-gray-900 text-slate-300 fixed left-0 top-0 h-screen 
+  overflow-y-auto z-10 transition-transform duration-300"
+  [ngClass]="{
+        'translate-x-0': menuService.isMenuOpen(), 
+        '-translate-x-full': !menuService.isMenuOpen(),
+        'sm:translate-x-0 sm:block': true,
+        
+    }"
+>
+  <!-- gifs-side-menu-header -->
+  <div class="pt-8 sm:pt-0">
+    <gifs-side-menu-header></gifs-side-menu-header>
+  </div>
+
+  <!-- gifs-side-menu-options -->
+  <gifs-side-menu-options></gifs-side-menu-options>
+
 </div>
