@@ -76,7 +76,8 @@ export class GifService {
     }
 
     getHistoryGifs( query:string ):Gif[][]{
-        return this.searchHistory()['query'] ?? [];
+        console.log(this.searchHistory()[query]);
+        return this.searchHistory()[query] ?? [];
     }
 
 }
