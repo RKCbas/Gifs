@@ -11,12 +11,15 @@ import { Gif } from '../../interfaces/gif.interface';
 })
 export default class SearchPageComponent { 
   
-  gifs = signal<Gif[]>([])
+  gifs = signal<Gif[][]>([])
 
   gifsService = inject(GifService);
 
   onSearch( query:string ){
-    this.gifsService.searchGifs(query);
+    this.gifsService.searchGifs(query).subscribe( (resp)=>{
+      this.gifs.set(resp);
+      console.log(resp)
+    });
 
   }
 

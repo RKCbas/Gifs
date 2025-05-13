@@ -5,6 +5,7 @@ import type { GiphyResponse } from '../interfaces/giphy.interfaces';
 // add *type* with interfaces
 import { Gif } from '../interfaces/gif.interface';
 import { GifMapper } from '../mapper/gif.mapper';
+import { map } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class GifService {
@@ -33,16 +34,27 @@ export class GifService {
     }
     
     searchGifs( query:string ){
-        this.http.get<GiphyResponse>(`${ environment.giphyUrl }/search`, {
+        return this.http.get<GiphyResponse>(`${ environment.giphyUrl }/search`, {
             params: {
                 api_key: environment.giphyApiKey,
                 limit: 24,
                 q: query
             }
-        }).subscribe( (resp)=>{
-            const gifs = GifMapper.mapGiphyItemsToGifArrayOfThrees(resp.data);
-            console.log( { gifs } );
         })
+        .pipe(
+            map( 
+                ({ data }) => data
+            ),
+            map(
+                (items) =>  GifMapper.mapGiphyItemsToGifArrayOfThrees(items)
+            )
+            // TODO: Historial
+        );
+        // .subscribe( (resp)=>{
+        //     const gifs = GifMapper.mapGiphyItemsToGifArrayOfThrees(resp.data);
+        //     console.log( { gifs } );
+
+        // })
     }
 
 }
