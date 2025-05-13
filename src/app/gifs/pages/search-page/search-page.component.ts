@@ -1,9 +1,23 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { GifListComponent } from "../../components/gif-list/gif-list.component";
+import { GifService } from '../../services/gifs.service';
+import { Gif } from '../../interfaces/gif.interface';
 
 @Component({
   selector: 'app-search-page',
-  imports: [],
+  imports: [GifListComponent],
   templateUrl: './search-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class SearchPageComponent { }
+export default class SearchPageComponent { 
+  
+  gifs = signal<Gif[]>([])
+
+  gifsService = inject(GifService);
+
+  onSearch( query:string ){
+    this.gifsService.searchGifs(query);
+
+  }
+
+}
