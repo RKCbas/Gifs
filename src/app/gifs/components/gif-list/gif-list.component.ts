@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, input, viewChild } from '@angular/core';
 import { GifListItemComponent } from "./gif-list-item/gif-list-item.component";
 import { Gif } from '../../interfaces/gif.interface';
 
@@ -10,4 +10,13 @@ import { Gif } from '../../interfaces/gif.interface';
 })
 export class GifListComponent {
   groups = input.required<Gif[][]>(); 
+
+  scrollDivRef = viewChild<ElementRef>('groupDiv')
+
+  onScroll( event:Event ){
+    const scrollDiv = this.scrollDivRef()?.nativeElement;
+
+    // console.log(scrollDiv);
+  }
+
 }
