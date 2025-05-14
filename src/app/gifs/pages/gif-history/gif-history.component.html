@@ -4,6 +4,9 @@
     
     <gif-list 
         [groups]="gifsByKey()"
+        [scrollState]="scrollStateService.historyScrollState()[query()]"
+        (isAtBottomChange)="handleIsAtBottom($event)"
+        (scroll)="handleScroll($event)"
     />
 
 </section>

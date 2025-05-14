@@ -3,7 +3,9 @@
     
     <gif-list 
         [groups]="gifService.trendingGifGroup()"
+        [scrollState]="scrollStateService.pagesScrollState()['trendingPage']"
         (isAtBottomChange)="handleIsAtBottom($event)"
+        (scroll)="handleScroll($event)"
     />
 
 </section>
