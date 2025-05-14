@@ -3,6 +3,7 @@
     
     <gif-list 
         [groups]="gifService.trendingGifGroup()"
+        (isAtBottomChange)="handleIsAtBottom($event)"
     />
 
 </section>

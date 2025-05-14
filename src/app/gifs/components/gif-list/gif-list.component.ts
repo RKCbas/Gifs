@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, input, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, input, Output, viewChild } from '@angular/core';
 import { GifListItemComponent } from "./gif-list-item/gif-list-item.component";
 import { Gif } from '../../interfaces/gif.interface';
 
@@ -13,6 +13,8 @@ export class GifListComponent {
 
   scrollDivRef = viewChild<ElementRef<HTMLDivElement>>('groupDiv')
 
+  @Output() isAtBottomChange = new EventEmitter<boolean>();
+
   onScroll( event:Event ){
     const scrollDiv = this.scrollDivRef()?.nativeElement;
 
@@ -22,10 +24,12 @@ export class GifListComponent {
     const clientHeight = scrollDiv.clientHeight;
     const scrollHeight = scrollDiv.scrollHeight;
 
-    const isAtBottom = scrollTop+clientHeight >= scrollHeight*0.85;
+    const isAtBottom = scrollTop+clientHeight + 300 >= scrollHeight;
     
     if(isAtBottom){
-      //TODO Logic to charge more gifs
+      this.isAtBottomChange.emit(true);
+    }else{
+      this.isAtBottomChange.emit(false);
     }
 
   }
