@@ -9,11 +9,10 @@ import type { GiphyResponse } from '../interfaces/giphy.interfaces';
 import { Gif } from '../interfaces/gif.interface';
 import { GifMapper } from '../mapper/gif.mapper';
 
-const GIF_KEY = 'gifsSearchHistory';
 
 // es lo mismo que: function loadSearchHistoryFromLocalStorage(){ lógica }
 const loadSearchHistoryFromLocalStorage = () => {
-    const gifsSearchHistory = localStorage.getItem(GIF_KEY);
+    const gifsSearchHistory = localStorage.getItem(environment.GIF_LS_KEY);
 
     return gifsSearchHistory ? JSON.parse(gifsSearchHistory) : {};
 }
@@ -28,8 +27,16 @@ export class GifService {
 
     private readonly http = inject(HttpClient);
 
-    trendingGifs = signal<Gif[][]>([]);
+    trendingGifs = signal<Gif[]>([]);
     trendingGifsLoading = signal(true);
+
+    trendingGifGroup = computed<Gif[][]>(()=>{
+        const groups = [];
+        for(let i = 0;i < this.trendingGifs().length; i+=3 ){
+            groups.push(this.trendingGifs().slice(i, i+3));
+        }
+        return groups;
+    })
 
     searchHistory = signal< Record<string, Gif[][]> >(loadSearchHistoryFromLocalStorage())
     searchHistoryKeys = computed(()=>
@@ -38,7 +45,7 @@ export class GifService {
 
     saveSearchHistoryFromLocalStorage = effect(()=>{
         const historyString = JSON.stringify( this.searchHistory() );
-        localStorage.setItem( GIF_KEY, historyString );
+        localStorage.setItem( environment.GIF_LS_KEY, historyString );
     });
 
     constructor(){
@@ -52,7 +59,7 @@ export class GifService {
                 limit: 24
             }
         }).subscribe( (resp)=>{
-            const gifs = GifMapper.mapGiphyItemsToGifArrayOfThrees(resp.data);
+            const gifs = GifMapper.mapGiphyItemsToGifArray(resp.data);
             this.trendingGifs.set(gifs);
             this.trendingGifsLoading.set(false);
             // console.log( { gifs } );

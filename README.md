@@ -1,6 +1,9 @@
 # GifsApp
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
+deployed example of the project:
+
+- [https://gifs-search-seb.netlify.app/](https://gifs-search-seb.netlify.app/)
 
 ## Development server
 
@@ -47,6 +50,7 @@ export const environment = {
     companyName: 'Gifs',
     companyName2: 'App',
     companySlogan: 'Maneja tus gifs',
+    GIF_LS_KEY: 'gifsSearchHistory',
 
     // ApiKeys
     giphyApiKey: 'GiphyApiKey'

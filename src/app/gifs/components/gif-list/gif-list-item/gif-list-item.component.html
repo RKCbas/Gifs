@@ -1,10 +1,10 @@
-<div class="grid gap-4">
+<div class="grid gap-4 h-full">
 
-  @for (gif of gifSet(); track gif.id) {
+  @for (gif of group(); track gif.id) {
     <img
-      class=" max-h-full max-w-full rounded-lg object-cover"
+      class=" h-full w-full rounded-lg object-cover"
       [src]="gif.url"
-      alt=""
+      [alt]="gif.title"
     />
   }
 

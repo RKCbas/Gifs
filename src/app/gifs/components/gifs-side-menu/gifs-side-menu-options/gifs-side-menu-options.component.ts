@@ -37,5 +37,8 @@ export class GifsSideMenuOptionsComponent {
     }
   ]
 
+  onDeleteHistory():void{
+    this.gifsService.searchHistory.set({})
+  }
   
 }

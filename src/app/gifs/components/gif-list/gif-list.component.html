@@ -1,8 +1,8 @@
 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
     
-    @for (gifSet of gifs(); track gifSet) {
+    @for (group of groups(); track group) {
 
-        <gif-list-item [gifSet] = "gifSet" />
+        <gif-list-item [group] = "group" />
         
     }
     

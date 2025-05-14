@@ -8,5 +8,5 @@ import { Gif } from 'src/app/gifs/interfaces/gif.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GifListItemComponent { 
-  gifSet = input.required<Gif[]>()
+  group = input.required<Gif[]>()
 }
