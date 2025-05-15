@@ -1,6 +1,6 @@
 # GifsApp
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6. and for the styles used [Tailwind](https://tailwindcss.com/docs/installation/framework-guides) and for the icons used [Font Awesome](https://fontawesome.com/icons).
 deployed example of the project:
 
 - [https://gifs-search-seb.netlify.app/](https://gifs-search-seb.netlify.app/)
