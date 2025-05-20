@@ -5,6 +5,38 @@ deployed example of the project:
 
 - [https://gifs-search-seb.netlify.app/](https://gifs-search-seb.netlify.app/)
 
+## Cloned the repository from github
+
+In case that you cloned the repository you must do the following:
+
+You must Create 2 environment files in the environments folder with the next syntax:
+
+Filename: 'environment.development.ts' and 'environment.ts'
+
+``` Typescript
+export const environment = {
+    
+    production: true,
+    companyName: 'Gifs',
+    companyName2: 'App',
+    companySlogan: 'Maneja tus gifs',
+    GIF_LS_KEY: 'gifsSearchHistory',
+
+    // ApiKeys
+    giphyApiKey: 'GiphyApiKey'
+    giphyUrl: 'https://api.giphy.com/v1/gifs'
+    
+    // URLS
+    
+};
+```
+
+And you must install the dependencies by using the following command:
+
+```bash
+npm i
+```
+
 ## Development server
 
 To start a local development server, run:
@@ -38,28 +70,6 @@ ng build
 ```
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-You must Create 2 environment files in the environments folder with the next syntax:
-
-Filename: 'environment.development.ts' and 'environment.ts'
-
-``` Typescript
-export const environment = {
-    
-    production: true,
-    companyName: 'Gifs',
-    companyName2: 'App',
-    companySlogan: 'Maneja tus gifs',
-    GIF_LS_KEY: 'gifsSearchHistory',
-
-    // ApiKeys
-    giphyApiKey: 'GiphyApiKey'
-    giphyUrl: 'https://api.giphy.com/v1/gifs'
-    
-    // URLS
-    
-};
-```
 
 ## Running unit tests
 
